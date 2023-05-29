@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  version: 0.0.0
+  title: Config Schema
+  description: |-
+    Schemata for parts of config file
+servers:
+  - url: "."
+paths: {}
+components:
+  schemas:
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # All Configurations
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Config:
+      description: |-
+        Structure of general configuration.
+      type: object
+      required:
+        - peano
+      properties:
+        peano:
+          $ref: "#/components/schemas/ConfigPeano"
+      additionalProperties: false
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Configuration for Peano curves
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ConfigPeano:
+      description: |-
+        Structure of general configuration.
+      type: object
+      required:
+        - transformations
+      properties:
+        transformations:
+          description: Representation of transformation.
+          type: array
+          items:
+            type: string
+      additionalProperties: false

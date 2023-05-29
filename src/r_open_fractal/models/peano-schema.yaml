@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  version: 0.0.0
+  title: Peano Schema
+  description: |-
+    Schemata for Peano curves
+servers:
+  - url: "."
+paths: {}
+components:
+  schemas:
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Plot settings
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    PlotSettings:
+      description: Settings for plots.
+      type: object
+      required:
+        - curve
+        - fill
+        - grid
+        - frame
+        # - orientation
+      properties:
+        # settings for parts
+        curve:
+          $ref: '#/components/schemas/PlotSettingsAspect'
+        fill:
+          $ref: '#/components/schemas/PlotSettingsAspect'
+        grid:
+          $ref: '#/components/schemas/PlotSettingsAspect'
+        frame:
+          $ref: '#/components/schemas/PlotSettingsAspect'
+        # matrix settings
+        orientation:
+          $ref: '#/components/schemas/EnumMatrixPlotOrientation'
+          # default: null
+          nullable: false # <- FIXME: does not work.
+        # general image settings
+        transparent:
+          type: boolean
+          default: true
+        scale:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+        dpi:
+          type: integer
+          default: 1
+        # settings for animation
+        fps:
+          type: integer
+          default: 1
+        mirror:
+          type: boolean
+          default: false
+      additionalProperties: true
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Common settings for aspects of plots
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    PlotSettingsAspect:
+      description: |-
+        Attributes for a plot aspect.
+      type: object
+      required: []
+      properties:
+        show:
+          type: boolean
+          default: false
+        colour:
+          # type: Any
+          default: 'black'
+        lw:
+          type: integer
+          default: 1
+      additionalProperties: true
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ENUM plot orientations
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    EnumMatrixPlotOrientation:
+      description: |-
+        An enumeration of possible options for the orientation of a plot of a matrix.
+      type: string
+      # nullable: true
+      enum:
+        - 'UNCHANGED'
+        - 'ROTATE-LEFT'
+        - 'TRANSPOSED'
+        - 'FLIPPED-ROWS'
+        - 'FLIPPED-COLUMNS'
+      default: FLIPPED-ROWS
