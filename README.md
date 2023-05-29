@@ -34,5 +34,4 @@ for cb in peano.plot_iterator(images, path=lambda t: f'path/to/output_{t}.png', 
 peano.visualise_animation(images, path='path/to/output.gif', settings=settings);
 ```
 
-See [examples/README.md](examples/README.md) for more information
-and [examples/example.py](examples/example.py) for a full example.
+See [examples/README.md](examples/README.md) for more information.
