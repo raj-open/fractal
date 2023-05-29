@@ -67,6 +67,14 @@ build-backend = 'setuptools.build_meta'
 [project.urls]
 homepage = 'https://github.com/raj-open/fractal'
 
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+r_open_fractal = [
+    'assets/*.yaml',
+]
+
 [tool.setuptools.packages.find]
 where = [ 'src' ]
 include = [ 'r_open_fractal*' ]
