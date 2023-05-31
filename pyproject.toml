@@ -13,9 +13,8 @@ readme = 'README.md'
 requires-python = '>=3.10'
 keywords = [
     'python',
-    'plots',
-    'histogram',
-    'csv',
+    'mathematics',
+    'fractals',
 ]
 # cf. https://pypi.org/classifiers
 classifiers = [
