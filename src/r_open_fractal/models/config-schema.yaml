@@ -5,7 +5,7 @@ info:
   description: |-
     Schemata for parts of config file
 servers:
-  - url: "."
+  - url: "https://github.com/raj-open"
 paths: {}
 components:
   schemas:
